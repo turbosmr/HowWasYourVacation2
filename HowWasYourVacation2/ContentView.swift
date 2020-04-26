@@ -146,9 +146,9 @@ struct Bookmarks : View {
            .offset(x: 25)
          }
          List {
-             NavigationLink(destination: FeedView()){
+             NavigationLink(destination: FeedView2()){
                 Text("Las Vegas")}
-             NavigationLink(destination: FeedView()){
+             NavigationLink(destination: FeedView2()){
                 Text("Oakland")}
              NavigationLink(destination: FeedView()){
                 Text("San Francisco")}
@@ -274,6 +274,57 @@ struct FeedView : View {
                    })
     }
 }
+struct FeedView2 : View {
+    var body : some View {
+      
+       VStack(alignment: .leading){
+                   
+        HStack{
+                Image(systemName: "person.crop.circle.fill")
+                   .resizable().frame(width: 50, height: 50)
+                   .foregroundColor(Color.gray)
+                    .padding(.leading, 10)
+            VStack(alignment: .leading){
+                Text("Johnson")
+                   .font(.system(size: 20))
+                Text("4/19/2020")
+                    .font(.system(size: 15))
+            }
+        }
+        HStack{
+                Image("ThingstoKnowLasVegas__HERO_shutterstock_708501844")
+                   .resizable().frame(height: 125)
+                   .scaledToFit()
+                   .padding(.leading, 10)
+            
+                Image("venetian-exterior_900x600.jpg.resize.0.0.474.316")
+                   .resizable().frame(height: 125)
+                   .scaledToFit()
+                   .padding(.trailing, 10)
+        }
+        HStack{
+            NavigationLink(destination: DetailedFeedView()) {
+                Image("trp4368po-203918-pool.1100x800")
+                   .resizable().frame(height: 125)
+                   .scaledToFit()
+                    .padding(.leading, 10)
+            }.buttonStyle(PlainButtonStyle())
+                Image("lasvw-exterior-0367-hor-feat")
+                    .resizable().frame(height: 125)
+                    .scaledToFit()
+                    .padding(.trailing, 10)
+        }
+        NavigationLink(destination: QuestionsView()) {
+            Text("View Questions")
+               .font(.system(size: 20))
+               .padding(.top, 5)
+               .padding(.leading, 10)
+            }
+        }
+        
+        .navigationBarTitle(Text("Las Vegas"))
+    }
+}
 struct DetailedFeedView : View {
     var body : some View {
       
@@ -329,7 +380,7 @@ struct QuestionsView : View {
                     .foregroundColor(Color.orange)
             }
         }
-     Text("Answer: I loved San Francisco! Yes, The Salesforce tower was paying this really cool light show at the top of the tower!")
+     Text("Answer: I loved San Francisco! Yes, The Salesforce tower was playing this really cool light show at the top of the tower!")
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .padding(.top, 20)
