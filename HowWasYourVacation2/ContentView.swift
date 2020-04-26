@@ -104,38 +104,7 @@ struct SearchView : UIViewRepresentable {
 }
 
 struct Profile : View {
-
-       let menuItems = ["Vacations", "Questions Asked"]
     
-       struct DetailView: View {
-        
-            let menuItem: String
-            var body: some View {
-                
-                VStack(alignment: .leading) {
-                
-                HStack{
-                
-                Image(systemName: "person.crop.circle.fill").resizable().frame(width: 50, height: 50) .offset(x: 20).foregroundColor(Color.gray)
-                
-                Text("Steve")
-                    .font(.system(size: 25))
-                    .padding(.bottom, 40)
-                    .padding(.top, 40)
-                    .offset(x: 25)
-                }
-                List {
-                  Text("Item 1")
-                  Text("Item 2")
-                  Text("Item 3")
-                    }
-                }
-                .navigationBarTitle(Text(menuItem))
-                .navigationBarItems(trailing:
-                    NavigationLink(destination: AddAVacationView()) {
-                    Text("Add a Vacation")})
-            }
-       }
        var body : some View {
        
         VStack(alignment: .leading) {
@@ -150,14 +119,14 @@ struct Profile : View {
                     .padding(.top, 40)
                     .offset(x: 25)
             }
-            List(menuItems, id: \.self) { menuItem in
-              NavigationLink(
-                destination: DetailView(menuItem: menuItem)) {
-                  Text(menuItem)
-                }
-            }.listStyle(GroupedListStyle())
-             .environment(\.horizontalSizeClass, .compact)
-             .navigationBarTitle(Text("Home"))
+                List {
+                    NavigationLink(destination: VacationsView()){         Text("Vacations")}
+                    NavigationLink(destination: QuestionsAskedView()){
+                        Text("Questions Asked")}
+                    } .navigationBarTitle(Text("Bookmarks"))
+                      .listStyle(GroupedListStyle())
+                      .environment(\.horizontalSizeClass, .compact)
+                      .navigationBarTitle(Text("Home"))
         }
     }
 }
@@ -177,13 +146,74 @@ struct Bookmarks : View {
            .offset(x: 25)
          }
          List {
-           Text("Item 1")
-           Text("Item 2")
-           Text("Item 3")
+             NavigationLink(destination: FeedView()){
+                Text("Las Vegas")}
+             NavigationLink(destination: FeedView()){
+                Text("Oakland")}
+             NavigationLink(destination: FeedView()){
+                Text("San Francisco")}
             }.listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .compact)
             }
           .navigationBarTitle(Text("Bookmarks"))
+    }
+}
+struct VacationsView : View {
+    var body : some View {
+        
+        VStack(alignment: .leading) {
+                   
+        HStack{
+           
+         Image(systemName: "person.crop.circle.fill").resizable().frame(width: 50, height: 50) .offset(x: 20).foregroundColor(Color.gray)
+       
+         Text("Steve")
+           .font(.system(size: 25))
+           .padding(.bottom, 40)
+           .padding(.top, 40)
+           .offset(x: 25)
+         }
+         List {
+             NavigationLink(destination: FeedView()){
+                Text("Palm Beach")}
+             NavigationLink(destination: FeedView()){
+                Text("Denver")}
+             NavigationLink(destination: FeedView()){
+                Text("San Francisco")}
+            }.listStyle(GroupedListStyle())
+            .environment(\.horizontalSizeClass, .compact)
+            }
+          .navigationBarTitle(Text("Vacations"))
+          .navigationBarItems(trailing:
+               NavigationLink(destination: AddAVacationView()) {
+               Text("Add a Vacation")})
+    }
+}
+struct QuestionsAskedView : View {
+    var body : some View {
+        
+        VStack(alignment: .leading) {
+                   
+        HStack{
+           
+         Image(systemName: "person.crop.circle.fill").resizable().frame(width: 50, height: 50) .offset(x: 20).foregroundColor(Color.gray)
+       
+         Text("Steve")
+           .font(.system(size: 25))
+           .padding(.bottom, 40)
+           .padding(.top, 40)
+           .offset(x: 25)
+         }
+         List {
+            
+             NavigationLink(destination: AnswerQuestionsView()){         Text("Bill asked about: San Francisco")}
+             NavigationLink(destination: AnswerQuestionsView()){         Text("Anita asked about: Oakland")}
+             NavigationLink(destination: AnswerQuestionsView()){         Text("Johnson asked about: Palm Beach")}
+            }.listStyle(GroupedListStyle())
+            .environment(\.horizontalSizeClass, .compact)
+            }
+          .navigationBarTitle(Text("Questions Asked"))
+            
     }
 }
 
