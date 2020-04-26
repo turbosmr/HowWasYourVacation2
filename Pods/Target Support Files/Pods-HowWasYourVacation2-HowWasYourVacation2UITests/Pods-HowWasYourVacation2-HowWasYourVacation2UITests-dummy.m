@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_HowWasYourVacation2_HowWasYourVacation2UITests : NSObject
+@end
+@implementation PodsDummy_Pods_HowWasYourVacation2_HowWasYourVacation2UITests
+@end

@@ -1,0 +1,6 @@
+framework module Pods_HowWasYourVacation2_HowWasYourVacation2UITests {
+  umbrella header "Pods-HowWasYourVacation2-HowWasYourVacation2UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
